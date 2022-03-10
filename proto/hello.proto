@@ -1,0 +1,19 @@
+
+syntax = "proto3";
+
+package proto;
+option go_package = "./proto";
+
+enum MessageType {
+  Foo = 0;
+  Bar = 1;
+}
+
+message HelloMessage {
+  MessageType type = 1;
+  string name = 2;
+}
+
+service Greeter {
+  rpc SayHello(stream HelloMessage) returns (stream HelloMessage) {}
+}
